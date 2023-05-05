@@ -1,0 +1,13 @@
+.styles {
+  display: flex;
+  flex-gap: 20px;
+  flex-direction: column; 
+  width: 100vw;
+  height: 100vh;
+  background: '#CCC';
+  color: '#F5F5F5';
+}
+
+.styles a {
+  font-size: 50px;
+}
