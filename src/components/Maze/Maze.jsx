@@ -16,8 +16,8 @@ const Maze = ({ json, w, h }) => {
         height: `${(h + h + 1) * 50}px`
       }}
     >
-      {json.map((row) => row.map((col) => {
-        const key = `${row}-${col}`
+      {json.map((row, ri) => row.map((col, ci) => {
+        const key = `${ri}-${ci}`
         switch (col) {
           case 'p':
             return <Entity key={key} letter="p" backgroundColor="pink" />
