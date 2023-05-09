@@ -1,5 +1,5 @@
 import React from 'react'
-import Maze from './Maze'
+import Game from './Game'
 import Welcome from './Welcome'
 import Win from './Win'
 
@@ -17,8 +17,8 @@ const Page = () => {
       <Route path="/win">
         <Win />
       </Route>
-      <Route path="/maze">
-        <Maze />
+      <Route path="/game">
+        <Game />
       </Route>
       <Route path="/">
         <Welcome />

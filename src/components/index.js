@@ -1,3 +1,4 @@
-import Player from './Player'
+import Entity from './Entity'
+// import Maze from './Maze'
 
-export { Player }
+export { Entity }
