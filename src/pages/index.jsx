@@ -3,29 +3,32 @@ import Game from './Game'
 import Welcome from './Welcome'
 import Win from './Win'
 
-import { Switch, Route } from 'react-router-dom'
-
-const navigate = (page) => {
-  window.location = `/?route=${page}`
-}
+import { useStoreon } from 'storeon/react'
+import { routerKey } from '@storeon/router'
 
 const Page = () => {
-  // escoger la pagina
+  const { [routerKey]: route } = useStoreon(routerKey)
+
+  let Component = null
+  switch (route.match.page) {
+    case 'welcome':
+      Component = <Welcome />
+      break
+    case 'game':
+      Component = <Game />
+      break
+    case 'win':
+      Component = <Win />
+      break
+    default:
+      Component = <h1>404</h1>
+  }
 
   return (
-    <Switch>
-      <Route path="/win">
-        <Win />
-      </Route>
-      <Route path="/game">
-        <Game />
-      </Route>
-      <Route path="/">
-        <Welcome />
-      </Route>
-    </Switch>
+    <main>
+      {Component}
+    </main>
   )
 }
 
-export { navigate }
 export default Page

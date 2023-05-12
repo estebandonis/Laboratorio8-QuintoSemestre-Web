@@ -1,14 +1,16 @@
 import React from 'react'
-import Page from './pages'
-import { BrowserRouter } from 'react-router-dom'
+import { StoreContext } from 'storeon/react'
+import store from '@store'
+
+import Page from '@pages'
 
 function App () {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <StoreContext.Provider value={store}>
+      <div className="App">
         <Page />
-      </BrowserRouter>
-    </div>
+      </div>
+    </StoreContext.Provider>
   )
 }
 

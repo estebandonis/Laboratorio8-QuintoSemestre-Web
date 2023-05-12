@@ -14,6 +14,10 @@ export default defineConfig({
       {
         find: '@pages',
         replacement: resolve(__dirname, './src/pages')
+      },
+      {
+        find: '@store',
+        replacement: resolve(__dirname, './src/store')
       }
     ]
   }
