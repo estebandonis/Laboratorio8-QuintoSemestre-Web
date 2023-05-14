@@ -4,17 +4,16 @@ import { useStoreon } from 'storeon/react'
 
 import { Maze } from '@components'
 import { styles } from './Game.module.css'
+import { navigate } from '@store'
 
 const Game = () => {
   const [mazeLayout, setMazeLayout] = useState(null)
   const [show, setShow] = useState(true)
-  const [pressed, setPressed] = useState(false)
   const { datos } = useStoreon('datos')
   let ignore = false
 
   const getMaze = async (w, h) => {
     const response = await fetch(`https://maze.uvgenios.online/?type=json&w=${w}&h=${h}`)
-    console.log('called')
     return await response.json()
   }
 
@@ -37,7 +36,6 @@ const Game = () => {
   }, [mazeLayout])
 
   const search = () => {
-    console.log('searching', mazeLayout)
     const val = 'p'
     for (const row in mazeLayout) {
       for (const col in mazeLayout[row]) {
@@ -60,18 +58,14 @@ const Game = () => {
   const pressD = (index, val) => {
     if (index[1] > 0) {
       const row = index[0]
-      console.log('row old: ' + row)
-      console.log('row new: ' + row)
       const col = parseInt(index[1]) + 1
-      console.log('col old: ' + index[1])
-      console.log('col new: ' + col)
       if (searchSpecific(row, col, ' ')) {
         const newLayout = mazeLayout
         newLayout[index[0]][index[1]] = ' '
         newLayout[row][col] = val
         setMazeLayout(newLayout)
-        console.log('new: ', newLayout)
-        console.log('old ', mazeLayout)
+      } else if (searchSpecific(row, col, 'g')) {
+        navigate('/')
       }
     }
   }
@@ -84,8 +78,9 @@ const Game = () => {
         const newLayout = mazeLayout
         newLayout[index[0]][index[1]] = ' '
         newLayout[row][col] = val
-        console.log(newLayout)
         setMazeLayout(newLayout)
+      } else if (searchSpecific(row, col, 'g')) {
+        navigate('/')
       }
     }
   }
@@ -93,18 +88,14 @@ const Game = () => {
   const pressA = (index, val) => {
     if (index[0][0] < 20) {
       const row = index[0]
-      console.log('row old: ' + index[0])
-      console.log('row new: ' + row)
       const col = parseInt(index[1]) - 1
-      console.log('col old: ' + index[1])
-      console.log('col new: ' + col)
       if (searchSpecific(row, col, ' ')) {
         const newLayout = mazeLayout
         newLayout[index[0]][index[1]] = ' '
         newLayout[row][col] = val
         setMazeLayout(newLayout)
-        console.log('new: ', newLayout)
-        console.log('old ', mazeLayout)
+      } else if (searchSpecific(row, col, 'g')) {
+        navigate('/')
       }
     }
   }
@@ -117,8 +108,9 @@ const Game = () => {
         const newLayout = mazeLayout
         newLayout[index[0]][index[1]] = ' '
         newLayout[row][col] = val
-        console.log(newLayout)
         setMazeLayout(newLayout)
+      } else if (searchSpecific(row, col, 'g')) {
+        navigate('/')
       }
     }
   }
@@ -126,11 +118,9 @@ const Game = () => {
   const detectKeyDown = (e) => {
     console.log('Clicked key: ', e.key)
     setShow(false)
-    if (mazeLayout && pressed === false) {
-      setPressed(true)
+    if (mazeLayout) {
       const val = 'p'
       const index = search()
-      console.log(index[1])
 
       if (e.key === 'w') {
         pressW(index, val)
@@ -142,18 +132,10 @@ const Game = () => {
         pressS(index, val)
       }
       setShow(true)
-      setPressed(false)
     } else {
       console.log('no esta')
     }
     /*  */
-  }
-
-  const mazo = () => {
-    const newMaze = mazeLayout
-    console.log('called')
-    console.log('array', newMaze)
-    return newMaze
   }
 
   if (!mazeLayout) {
@@ -163,9 +145,9 @@ const Game = () => {
   return (
     <div className={styles}>
       {
-        show?
+        show ?
         <Maze w={parseInt(datos.ancho)} h={parseInt(datos.alto)} json={mazeLayout} />
-        :'loading'
+          : 'loading'
       }
     </div>
   )
