@@ -2,6 +2,7 @@ import React from 'react'
 import Game from './Game'
 import Welcome from './Welcome'
 import Win from './Win'
+import Lose from './Lose'
 
 import { useStoreon } from 'storeon/react'
 import { routerKey } from '@storeon/router'
@@ -19,6 +20,9 @@ const Page = () => {
       break
     case 'win':
       Component = <Win />
+      break
+    case 'lose':
+      Component = <Lose />
       break
     default:
       Component = <h1>404</h1>

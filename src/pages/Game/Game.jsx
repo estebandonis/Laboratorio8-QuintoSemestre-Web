@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
 
-import { Maze } from '@components'
+import { Maze, Timer } from '@components'
 import { styles } from './Game.module.css'
 import { navigate } from '@store'
 
@@ -110,7 +110,7 @@ const Game = () => {
         newLayout[row][col] = val
         setMazeLayout(newLayout)
       } else if (searchSpecific(row, col, 'g')) {
-        navigate('/')
+        navigate('/win')
       }
     }
   }
@@ -135,7 +135,6 @@ const Game = () => {
     } else {
       console.log('no esta')
     }
-    /*  */
   }
 
   if (!mazeLayout) {
@@ -144,6 +143,15 @@ const Game = () => {
 
   return (
     <div className={styles}>
+      {
+        datos.selected ?
+        <div>
+          <h3>Tiempo Restantes:</h3>
+          <Timer />
+          <br />
+        </div>
+          : null
+      }
       {
         show ?
         <Maze w={parseInt(datos.ancho)} h={parseInt(datos.alto)} json={mazeLayout} />
