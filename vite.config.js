@@ -18,6 +18,10 @@ export default defineConfig({
       {
         find: '@store',
         replacement: resolve(__dirname, './src/store')
+      },
+      {
+        find: '@assets',
+        replacement: resolve(__dirname, './src/assets')
       }
     ]
   }

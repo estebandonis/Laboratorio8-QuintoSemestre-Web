@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
-import { navigate } from '@store'
 
+import { navigate } from '@store'
+import { Pill } from '@components'
 import { styles } from './Welcome.module.css'
 
 const Welcome = () => {
@@ -12,9 +13,14 @@ const Welcome = () => {
       alto: datos.alto,
       ancho: datos.ancho,
       selected: datos.selected,
-      tiempo: datos.tiempo
+      tiempo: datos.tiempo,
+      theme: datos.theme
     }
   )
+
+  useEffect(() => {
+    dispatch('borrar')
+  }, [])
 
   useEffect(() => {
     dispatch('update', data)
@@ -83,11 +89,10 @@ const Welcome = () => {
       <input type="number" value={data.ancho} onChange={handleChangeAncho} placeholder='Ingrese el ancho' />
       <input type="checkbox" checked={data.selected} onChange={handleChecked} />
       {
-        data.selected === true ?
-          <input type="number" value={data.tiempo} onChange={handleChangeTiempo} placeholder='Ingrese el tiempo' />
-          : null
+        data.selected === true ? <input type="number" value={data.tiempo} onChange={handleChangeTiempo} placeholder='Ingrese el tiempo' /> : null
       }
       <button onClick={handleClick}>Iniciar</button>
+      <Pill />
     </div>
   )
 }

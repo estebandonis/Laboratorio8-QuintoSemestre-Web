@@ -24,8 +24,7 @@ const Game = () => {
   useEffect(() => {
     if (!ignore) {
       setMaze()
-      console.log('alto: ' + datos.alto)
-      console.log('alto: ' + datos.ancho)
+      console.log('theme: ' + datos.theme)
       ignore = true
     }
   }, [])
@@ -49,6 +48,8 @@ const Game = () => {
 
   const searchSpecific = (row, col, val) => {
     if (mazeLayout[row][col] === val) {
+      console.log('val: ' + mazeLayout[row][col])
+      console.log('posicion: ', row, col, val)
       return true
     } else {
       return false
@@ -65,7 +66,8 @@ const Game = () => {
         newLayout[row][col] = val
         setMazeLayout(newLayout)
       } else if (searchSpecific(row, col, 'g')) {
-        navigate('/')
+        console.log('gano por D')
+        navigate('/win')
       }
     }
   }
@@ -80,7 +82,7 @@ const Game = () => {
         newLayout[row][col] = val
         setMazeLayout(newLayout)
       } else if (searchSpecific(row, col, 'g')) {
-        navigate('/')
+        navigate('/win')
       }
     }
   }
@@ -95,7 +97,7 @@ const Game = () => {
         newLayout[row][col] = val
         setMazeLayout(newLayout)
       } else if (searchSpecific(row, col, 'g')) {
-        navigate('/')
+        navigate('/win')
       }
     }
   }
@@ -144,18 +146,10 @@ const Game = () => {
   return (
     <div className={styles}>
       {
-        datos.selected ?
-        <div>
-          <h3>Tiempo Restantes:</h3>
-          <Timer />
-          <br />
-        </div>
-          : null
+        datos.selected ? <div><h3>Tiempo Restantes:</h3><Timer /><br /></div> : null
       }
       {
-        show ?
-        <Maze w={parseInt(datos.ancho)} h={parseInt(datos.alto)} json={mazeLayout} />
-          : 'loading'
+        show ? <Maze w={parseInt(datos.ancho)} h={parseInt(datos.alto)} json={mazeLayout} theme={datos.theme} /> : null
       }
     </div>
   )
