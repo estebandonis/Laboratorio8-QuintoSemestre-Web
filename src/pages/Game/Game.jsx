@@ -25,14 +25,13 @@ const Game = () => {
   useEffect(() => {
     if (!ignore) {
       setMaze()
-      console.log('theme: ' + typeof (thema.tema))
       ignore = true
     }
   }, [])
 
   useEffect(() => {
     console.log('current: ', mazeLayout)
-    document.addEventListener('keydown', detectKeyDown, true)
+    window.addEventListener('keydown', detectKeyDown)
   }, [mazeLayout])
 
   const search = () => {
@@ -58,63 +57,58 @@ const Game = () => {
   }
 
   const pressD = (index, val) => {
-    if (index[1] > 0) {
-      const row = index[0]
-      const col = parseInt(index[1]) + 1
-      if (searchSpecific(row, col, ' ')) {
-        const newLayout = mazeLayout
-        newLayout[index[0]][index[1]] = ' '
-        newLayout[row][col] = val
-        setMazeLayout(newLayout)
-      } else if (searchSpecific(row, col, 'g')) {
-        console.log('gano por D')
-        navigate('/win')
-      }
+    const row = index[0]
+    const col = parseInt(index[1]) + 1
+    if (searchSpecific(row, col, ' ')) {
+      const newLayout = mazeLayout
+      newLayout[index[0]][index[1]] = ' '
+      newLayout[row][col] = val
+      setMazeLayout(newLayout)
+    } else if (searchSpecific(row, col, 'g')) {
+      window.removeEventListener('keydown', detectKeyDown)
+      navigate('/win')
     }
   }
 
   const pressW = (index, val) => {
-    if (index[0] > 1) {
-      const row = parseInt(index[0]) - 1
-      const col = index[1]
-      if (searchSpecific(row, col, ' ')) {
-        const newLayout = mazeLayout
-        newLayout[index[0]][index[1]] = ' '
-        newLayout[row][col] = val
-        setMazeLayout(newLayout)
-      } else if (searchSpecific(row, col, 'g')) {
-        navigate('/win')
-      }
+    const row = parseInt(index[0]) - 1
+    const col = index[1]
+    if (searchSpecific(row, col, ' ')) {
+      const newLayout = mazeLayout
+      newLayout[index[0]][index[1]] = ' '
+      newLayout[row][col] = val
+      setMazeLayout(newLayout)
+    } else if (searchSpecific(row, col, 'g')) {
+      window.removeEventListener('keydown', detectKeyDown)
+      navigate('/win')
     }
   }
 
   const pressA = (index, val) => {
-    if (index[0][0] < 20) {
-      const row = index[0]
-      const col = parseInt(index[1]) - 1
-      if (searchSpecific(row, col, ' ')) {
-        const newLayout = mazeLayout
-        newLayout[index[0]][index[1]] = ' '
-        newLayout[row][col] = val
-        setMazeLayout(newLayout)
-      } else if (searchSpecific(row, col, 'g')) {
-        navigate('/win')
-      }
+    const row = index[0]
+    const col = parseInt(index[1]) - 1
+    if (searchSpecific(row, col, ' ')) {
+      const newLayout = mazeLayout
+      newLayout[index[0]][index[1]] = ' '
+      newLayout[row][col] = val
+      setMazeLayout(newLayout)
+    } else if (searchSpecific(row, col, 'g')) {
+      window.removeEventListener('keydown', detectKeyDown)
+      navigate('/win')
     }
   }
 
   const pressS = (index, val) => {
-    if (index[0] < 20) {
-      const row = parseInt(index[0]) + 1
-      const col = index[1]
-      if (searchSpecific(row, col, ' ')) {
-        const newLayout = mazeLayout
-        newLayout[index[0]][index[1]] = ' '
-        newLayout[row][col] = val
-        setMazeLayout(newLayout)
-      } else if (searchSpecific(row, col, 'g')) {
-        navigate('/win')
-      }
+    const row = parseInt(index[0]) + 1
+    const col = index[1]
+    if (searchSpecific(row, col, ' ')) {
+      const newLayout = mazeLayout
+      newLayout[index[0]][index[1]] = ' '
+      newLayout[row][col] = val
+      setMazeLayout(newLayout)
+    } else if (searchSpecific(row, col, 'g')) {
+      window.removeEventListener('keydown', detectKeyDown)
+      navigate('/win')
     }
   }
 

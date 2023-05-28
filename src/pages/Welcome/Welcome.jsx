@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
 
 import { navigate } from '@store'
-import { Pill } from '@components'
-import { styles } from './Welcome.module.css'
+import { Pill, Inputs } from '@components'
+import { styles, form } from './Welcome.module.css'
 
 const Welcome = () => {
   const { dispatch, datos } = useStoreon('datos')
@@ -16,9 +16,13 @@ const Welcome = () => {
       tiempo: datos.tiempo
     }
   )
+  let ignore = false
 
   useEffect(() => {
-    dispatch('borrar')
+    if (!ignore) {
+      dispatch('borrar')
+      ignore = true
+    }
   }, [])
 
   useEffect(() => {
@@ -83,14 +87,15 @@ const Welcome = () => {
   return (
     <div className={styles}>
       Bienvenido al Juego de Laberinto
-
-      <input type="number" value={data.alto} onChange={handleChangeAlto} placeholder='Ingrese el alto' />
-      <input type="number" value={data.ancho} onChange={handleChangeAncho} placeholder='Ingrese el ancho' />
-      <input type="checkbox" checked={data.selected} onChange={handleChecked} />
-      {
-        data.selected === true ? <input type="number" value={data.tiempo} onChange={handleChangeTiempo} placeholder='Ingrese el tiempo' /> : null
-      }
-      <button onClick={handleClick}>Iniciar</button>
+      <div className={form}>
+        <Inputs type={'number'} value={data.alto} onchange={handleChangeAlto} placeholder={'Ingrese el alto'} />
+        <Inputs type={'number'} value={data.ancho} onchange={handleChangeAncho} placeholder={'Ingrese el ancho'} />
+        <input type="checkbox" checked={data.selected} onChange={handleChecked} />
+        {
+          data.selected === true ? <Inputs type={'number'} value={data.tiempo} onchange={handleChangeTiempo} placeholder={'Ingrese el tiempo'} /> : null
+        }
+        <button onClick={handleClick}>Iniciar</button>
+      </div>
       <Pill />
     </div>
   )

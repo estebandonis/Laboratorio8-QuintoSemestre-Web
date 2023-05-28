@@ -19,3 +19,8 @@
   padding-right: 10px;
   border-radius: 10px;
 }
+
+.mazeSection {
+  display: flex;
+  justify-content: center;
+}

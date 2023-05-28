@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
 
 import { MazeTerraria, MazeMinecraft } from '@components'
-import { styles } from './Pill.module.css'
+import { styles, mazeSection } from './Pill.module.css'
 
 const Pill = () => {
   const [selection, setSelection] = useState({
@@ -63,12 +63,14 @@ const Pill = () => {
         <button onClick={onClick1}>Minecraft</button>
         <button onClick={onClick2}>Terraria</button>
       </ul>
-      {
-        showMine ? <MazeMinecraft w={parseInt(2)} h={parseInt(2)} json={jason} /> : null
-      }
-      {
-        showTerra ? <MazeTerraria w={parseInt(2)} h={parseInt(2)} json={jason} /> : null
-      }
+      <div className={mazeSection}>
+        {
+          showMine ? <MazeMinecraft w={parseInt(2)} h={parseInt(2)} json={jason} /> : null
+        }
+        {
+          showTerra ? <MazeTerraria w={parseInt(2)} h={parseInt(2)} json={jason} /> : null
+        }
+      </div>
     </div>
   )
 }
