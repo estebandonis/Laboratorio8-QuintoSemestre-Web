@@ -13,8 +13,7 @@ const Welcome = () => {
       alto: datos.alto,
       ancho: datos.ancho,
       selected: datos.selected,
-      tiempo: datos.tiempo,
-      theme: datos.theme
+      tiempo: datos.tiempo
     }
   )
 

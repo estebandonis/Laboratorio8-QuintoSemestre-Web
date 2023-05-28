@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
 
-import { Maze, Timer } from '@components'
+import { MazeMinecraft, MazeTerraria, Timer } from '@components'
 import { styles } from './Game.module.css'
 import { navigate } from '@store'
 
@@ -10,6 +10,7 @@ const Game = () => {
   const [mazeLayout, setMazeLayout] = useState(null)
   const [show, setShow] = useState(true)
   const { datos } = useStoreon('datos')
+  const { thema } = useStoreon('thema')
   let ignore = false
 
   const getMaze = async (w, h) => {
@@ -24,7 +25,7 @@ const Game = () => {
   useEffect(() => {
     if (!ignore) {
       setMaze()
-      console.log('theme: ' + datos.theme)
+      console.log('theme: ' + typeof (thema.tema))
       ignore = true
     }
   }, [])
@@ -149,7 +150,10 @@ const Game = () => {
         datos.selected ? <div><h3>Tiempo Restantes:</h3><Timer /><br /></div> : null
       }
       {
-        show ? <Maze w={parseInt(datos.ancho)} h={parseInt(datos.alto)} json={mazeLayout} theme={datos.theme} /> : null
+        show && thema.tema === 1 ? <MazeMinecraft w={parseInt(datos.ancho)} h={parseInt(datos.alto)} json={mazeLayout} /> : null
+      }
+      {
+        show && thema.tema === 2 ? <MazeTerraria w={parseInt(datos.ancho)} h={parseInt(datos.alto)} json={mazeLayout} /> : null
       }
     </div>
   )

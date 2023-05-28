@@ -1,4 +1,5 @@
 export { default as Entity } from './Entity'
-export { default as Maze } from './Maze'
+export { default as MazeMinecraft } from './MazeMinecraft'
+export { default as MazeTerraria } from './MazeTerraria'
 export { default as Timer } from './Timer'
 export { default as Pill } from './Pill'

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
 import { navigate } from '@store'
 
@@ -8,27 +7,30 @@ import { styles } from './Timer.module.css'
 const Timer = () => {
   const { datos } = useStoreon('datos')
   const time = datos.tiempo * 60
-  const [seconds, setSeconds] = useState(time)
+  const [timi, setTimi] = useState(time)
+  const [minutes, setMinutes] = useState(null)
+  const [seconds, setSeconds] = useState(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(seconds => seconds - 1)
+      setTimi(timi => timi - 1)
     }, 1000)
 
     return () => clearInterval(interval)
   }, [])
 
-  if (seconds === 0) {
-    navigate('/')
+  useEffect(() => {
+    setMinutes(Math.floor(timi / 60))
+    setSeconds(timi - (minutes * 60))
+  }, [timi])
+
+  if (timi === 0) {
+    navigate('/lose')
   }
 
   return (
-    <div className={styles}>{seconds} seconds elapsed</div>
+    <div className={styles}>You have {minutes}:{seconds} time left</div>
   )
-}
-
-Timer.propTypes = {
-  time: PropTypes.int
 }
 
 export default Timer

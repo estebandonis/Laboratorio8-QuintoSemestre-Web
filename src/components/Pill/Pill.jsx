@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
 
-import { Maze } from '@components'
+import { MazeTerraria, MazeMinecraft } from '@components'
 import { styles } from './Pill.module.css'
 
 const Pill = () => {
@@ -10,14 +10,10 @@ const Pill = () => {
     selected1: true,
     selected2: false
   })
-  const { dispatch, datos } = useStoreon('datos')
-  const [data, setData] = useState(
+  const { dispatch, thema } = useStoreon('thema')
+  const [dat, setDat] = useState(
     {
-      alto: datos.alto,
-      ancho: datos.ancho,
-      selected: datos.selected,
-      tiempo: datos.tiempo,
-      theme: datos.theme
+      tema: thema.tema
     }
   )
   const [showMine, setShowMine] = useState(true)
@@ -25,12 +21,17 @@ const Pill = () => {
   const jason = [['+', '-', '-', '+', '-', '-', '+'], ['|', 'p', ' ', '|', ' ', ' ', '|'], ['+', ' ', ' ', '+', ' ', ' ', '+'], ['|', ' ', ' ', ' ', ' ', 'g', '|'], ['+', '-', '-', '+', '-', '-', '+']]
 
   useEffect(() => {
-    dispatch('update', data)
-  }, [data])
+    console.log('dat tema: ', thema.tema)
+  }, [])
+
+  useEffect(() => {
+    dispatch('update/tema', dat)
+    console.log('data tema: ', dat.tema)
+  }, [dat])
 
   const changeTema = (value) => {
-    setData(valors => {
-      return { ...valors, theme: value }
+    setDat(valors => {
+      return { ...valors, tema: value }
     })
   }
 
@@ -42,7 +43,7 @@ const Pill = () => {
       setSelection({ selected1: true })
     }
     setSelection({ selected2: false })
-    console.log('entro', datos.theme)
+    console.log('entro', thema.tema)
   }
 
   const onClick2 = () => {
@@ -53,7 +54,7 @@ const Pill = () => {
       setSelection({ selected2: true })
     }
     setSelection({ selected1: false })
-    console.log('entro', datos.theme)
+    console.log('entro', thema.tema)
   }
 
   return (
@@ -63,10 +64,10 @@ const Pill = () => {
         <button onClick={onClick2}>Terraria</button>
       </ul>
       {
-        showMine ? <Maze w={parseInt(2)} h={parseInt(2)} json={jason} theme={1} /> : null
+        showMine ? <MazeMinecraft w={parseInt(2)} h={parseInt(2)} json={jason} /> : null
       }
       {
-        showTerra ? <Maze w={parseInt(2)} h={parseInt(2)} json={jason} theme={2} /> : null
+        showTerra ? <MazeTerraria w={parseInt(2)} h={parseInt(2)} json={jason} /> : null
       }
     </div>
   )
