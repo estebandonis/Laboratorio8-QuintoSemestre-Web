@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Timer from './Timer'
+import Inputs from './Inputs'
 
 export default {
-  title: 'Game/Timer',
-  component: Timer,
+  title: 'Menus/Inputs',
+  component: Inputs,
   args: {
     backgroundColor: 'white'
   }
@@ -13,11 +13,13 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => (
   <div style={{ padding: '20px' }}>
-    <Timer {...args} />
+    <Inputs {...args} />
   </div>
 )
 
-export const AsPlayer = Template.bind({})
-AsPlayer.args = {
-  letter: 'P'
+export const AsNumber = Template.bind({})
+AsNumber.args = {
+  type: 'number',
+  value: 2,
+  placeholder: 'Alto'
 }

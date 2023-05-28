@@ -1,2 +1,3 @@
-import Pill from './Pill'
+const Pill = 2
+
 export default Pill

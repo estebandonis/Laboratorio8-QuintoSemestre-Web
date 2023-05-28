@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Timer from './Timer'
+import Buttons from './Buttons'
 
 export default {
-  title: 'Game/Timer',
-  component: Timer,
+  title: 'Menus/Buttons',
+  component: Buttons,
   args: {
     backgroundColor: 'white'
   }
@@ -13,11 +13,12 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => (
   <div style={{ padding: '20px' }}>
-    <Timer {...args} />
+    <Buttons {...args} />
   </div>
 )
 
-export const AsPlayer = Template.bind({})
-AsPlayer.args = {
-  letter: 'P'
+export const AsButton = Template.bind({})
+AsButton.args = {
+  type: 'button',
+  name: 'Prueba'
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import MazeMinecraft from './MazeMinecraft'
 
 export default {
-  title: 'Game/Maze',
+  title: 'Game/MazeMinecraft',
   component: MazeMinecraft
 }
 

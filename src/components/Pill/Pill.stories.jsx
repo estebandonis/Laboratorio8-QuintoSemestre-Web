@@ -3,7 +3,7 @@ import React from 'react'
 import Pill from './Pill'
 
 export default {
-  title: 'Sprites/Entity',
+  title: 'Menus/Pill',
   component: Pill,
   args: {
     backgroundColor: 'white'
@@ -17,12 +17,7 @@ const Template = (args) => (
   </div>
 )
 
-export const AsPlayer = Template.bind({})
-AsPlayer.args = {
+export const AsMinecraft = Template.bind({})
+AsMinecraft.args = {
   letter: 'P'
-}
-
-export const AsGoal = Template.bind({})
-AsGoal.args = {
-  letter: 'G'
 }

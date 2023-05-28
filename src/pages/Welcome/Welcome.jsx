@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
 
 import { navigate } from '@store'
-import { Pill } from '@components'
+import { Pill, Inputs } from '@components'
 import { styles } from './Welcome.module.css'
 
 const Welcome = () => {
@@ -84,6 +84,7 @@ const Welcome = () => {
     <div className={styles}>
       Bienvenido al Juego de Laberinto
 
+      <Inputs type={'number'} value={data.alto} onchange={handleChangeAlto} placeholder={'Ingrese el alto'} />
       <input type="number" value={data.alto} onChange={handleChangeAlto} placeholder='Ingrese el alto' />
       <input type="number" value={data.ancho} onChange={handleChangeAncho} placeholder='Ingrese el ancho' />
       <input type="checkbox" checked={data.selected} onChange={handleChecked} />

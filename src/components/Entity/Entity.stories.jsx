@@ -19,10 +19,10 @@ const Template = (args) => (
 
 export const AsPlayer = Template.bind({})
 AsPlayer.args = {
-  letter: 'P'
+  Imageurl: ''
 }
 
 export const AsGoal = Template.bind({})
 AsGoal.args = {
-  letter: 'G'
+  Imageurl: ''
 }

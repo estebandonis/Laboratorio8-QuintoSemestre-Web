@@ -3,7 +3,7 @@ import React from 'react'
 import MazeTerraria from './MazeTerraria'
 
 export default {
-  title: 'Game/Maze',
+  title: 'Game/MazeTerraria',
   component: MazeTerraria
 }
 
@@ -13,8 +13,8 @@ const Template = (args) => (
   </div>
 )
 
-export const As2x2 = Template.bind({})
-As2x2.args = {
+export const Como2x2 = Template.bind({})
+Como2x2.args = {
   json: [['+', '-', '-', '+', '-', '-', '+'], ['|', 'p', ' ', ' ', ' ', ' ', '|'], ['+', ' ', ' ', '+', ' ', ' ', '+'], ['|', ' ', ' ', '|', ' ', 'g', '|'], ['+', '-', '-', '+', '-', '-', '+']],
   w: 2,
   h: 2
