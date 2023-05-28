@@ -11,7 +11,7 @@ const Inputs = ({ type, value, onchange, placeholder }) => {
 
 Inputs.propTypes = {
   type: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.number,
   onchange: PropTypes.func,
   placeholder: PropTypes.string
 }
