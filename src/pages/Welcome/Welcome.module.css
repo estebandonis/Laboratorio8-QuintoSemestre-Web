@@ -15,8 +15,16 @@
 
 .form {
   display: flex;
+  flex-gap: 20px;
   flex-direction: column;
   width: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.centerTitle {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }

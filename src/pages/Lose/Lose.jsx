@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from '@store'
 
+import { Buttons } from '@components'
 import { styles } from './Lose.module.css'
 
 const Lose = () => {
@@ -12,7 +13,7 @@ const Lose = () => {
   return (
     <div className={styles}>
       <h1>Perdiste</h1>
-      <button onClick={handleChangeClick}>Volver a intentarlo</button>
+      <Buttons type={'button'} onclick={handleChangeClick} name={'Volver a intentarlo'} />
     </div>
   )
 }

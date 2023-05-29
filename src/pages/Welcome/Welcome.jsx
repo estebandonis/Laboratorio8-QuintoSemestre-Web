@@ -4,7 +4,7 @@ import { useStoreon } from 'storeon/react'
 
 import { navigate } from '@store'
 import { Pill, Inputs, Buttons } from '@components'
-import { styles, form } from './Welcome.module.css'
+import { styles, form, centerTitle } from './Welcome.module.css'
 
 const Welcome = () => {
   const { dispatch, datos } = useStoreon('datos')
@@ -86,7 +86,9 @@ const Welcome = () => {
 
   return (
     <div className={styles}>
-      Bienvenido al Juego de Laberinto
+      <div className={centerTitle}>
+        <h1>Bienvenido al Juego de Laberinto</h1>
+      </div>
       <div className={form}>
         <Inputs type={'number'} value={data.alto} onchange={handleChangeAlto} placeholder={'Ingrese el alto'} />
         <Inputs type={'number'} value={data.ancho} onchange={handleChangeAncho} placeholder={'Ingrese el ancho'} />
