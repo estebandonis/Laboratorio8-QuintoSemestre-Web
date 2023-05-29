@@ -17,7 +17,12 @@ const Template = (args) => (
   </div>
 )
 
-export const AsPlayer = Template.bind({})
-AsPlayer.args = {
-  letter: 'P'
+export const OneMinuto = Template.bind({})
+OneMinuto.args = {
+  timen: 1
+}
+
+export const OneAndHalfMinuto = Template.bind({})
+OneAndHalfMinuto.args = {
+  timen: 1.5
 }

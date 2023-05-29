@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useStoreon } from 'storeon/react'
 
 import { navigate } from '@store'
-import { Pill, Inputs } from '@components'
+import { Pill, Inputs, Buttons } from '@components'
 import { styles, form } from './Welcome.module.css'
 
 const Welcome = () => {
@@ -90,11 +90,11 @@ const Welcome = () => {
       <div className={form}>
         <Inputs type={'number'} value={data.alto} onchange={handleChangeAlto} placeholder={'Ingrese el alto'} />
         <Inputs type={'number'} value={data.ancho} onchange={handleChangeAncho} placeholder={'Ingrese el ancho'} />
-        <input type="checkbox" checked={data.selected} onChange={handleChecked} />
+        <Inputs type={'checkbox'} value={data.selected} onchange={handleChecked} />
         {
           data.selected === true ? <Inputs type={'number'} value={data.tiempo} onchange={handleChangeTiempo} placeholder={'Ingrese el tiempo'} /> : null
         }
-        <button onClick={handleClick}>Iniciar</button>
+        <Buttons type={'button'} onclick={handleClick} name={'Iniciar'} />
       </div>
       <Pill />
     </div>

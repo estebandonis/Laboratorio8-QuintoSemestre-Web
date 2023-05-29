@@ -141,7 +141,7 @@ const Game = () => {
   return (
     <div className={styles}>
       {
-        datos.selected ? <div><h3>Tiempo Restantes:</h3><Timer /><br /></div> : null
+        datos.selected ? <div><h3>Tiempo Restantes:</h3><Timer timen={datos.tiempo} /><br /></div> : null
       }
       {
         show && thema.tema === 1 ? <MazeMinecraft w={parseInt(datos.ancho)} h={parseInt(datos.alto)} json={mazeLayout} /> : null

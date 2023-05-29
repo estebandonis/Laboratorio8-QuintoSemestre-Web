@@ -17,8 +17,8 @@ const Template = (args) => (
   </div>
 )
 
-export const AsButton = Template.bind({})
-AsButton.args = {
+export const LongString = Template.bind({})
+LongString.args = {
   type: 'button',
-  name: 'Prueba'
+  name: 'fdsafdsaffafdsfafdsafsdafsadfdsafdsafasfsdfsdafdsfsadfdsfafsda'
 }

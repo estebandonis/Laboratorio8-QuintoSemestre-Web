@@ -21,5 +21,19 @@ export const AsNumber = Template.bind({})
 AsNumber.args = {
   type: 'number',
   value: 2,
-  placeholder: 'Alto'
+  placeholder: 'Prueba number'
+}
+
+export const AsLongString = Template.bind({})
+AsLongString.args = {
+  type: 'text',
+  value: 'gagsdfasdfafdsafdasfsafsdgsffasfdsgadfsgsdfsadfdsfdasfsdafas',
+  placeholder: 'Prueba string'
+}
+
+export const AsLongPlaceholder = Template.bind({})
+AsLongPlaceholder.args = {
+  type: 'text',
+  value: '',
+  placeholder: 'fñsahkñfjdklsajfkjdlsñajfjkadsñjfklñajsjdfñajkfdsñjfañjfkasdjñlj'
 }

@@ -5,7 +5,7 @@ import { useStoreon } from 'storeon/react'
 import { MazeTerraria, MazeMinecraft } from '@components'
 import { styles, mazeSection } from './Pill.module.css'
 
-const Pill = () => {
+const Pill = ({ tem }) => {
   const [selection, setSelection] = useState({
     selected1: true,
     selected2: false
@@ -21,12 +21,7 @@ const Pill = () => {
   const jason = [['+', '-', '-', '+', '-', '-', '+'], ['|', 'p', ' ', '|', ' ', ' ', '|'], ['+', ' ', ' ', '+', ' ', ' ', '+'], ['|', ' ', ' ', ' ', ' ', 'g', '|'], ['+', '-', '-', '+', '-', '-', '+']]
 
   useEffect(() => {
-    console.log('dat tema: ', thema.tema)
-  }, [])
-
-  useEffect(() => {
     dispatch('update/tema', dat)
-    console.log('data tema: ', dat.tema)
   }, [dat])
 
   const changeTema = (value) => {
@@ -76,8 +71,7 @@ const Pill = () => {
 }
 
 Pill.propTypes = {
-  letter: PropTypes.string,
-  backgroundColor: PropTypes.string
+  tem: PropTypes.number
 }
 
 export default Pill

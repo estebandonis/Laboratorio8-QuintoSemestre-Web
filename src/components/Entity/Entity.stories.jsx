@@ -17,12 +17,12 @@ const Template = (args) => (
   </div>
 )
 
-export const AsPlayer = Template.bind({})
-AsPlayer.args = {
-  Imageurl: ''
+export const LargeImg = Template.bind({})
+LargeImg.args = {
+  Imageurl: 'https://cnnespanol.cnn.com/wp-content/uploads/2015/06/150601115126-01-in2white.jpg?quality=100&strip=info'
 }
 
-export const AsGoal = Template.bind({})
-AsGoal.args = {
-  Imageurl: ''
+export const SmallImg = Template.bind({})
+SmallImg.args = {
+  Imageurl: 'https://pbs.twimg.com/media/CmBKgGrWkAET3Eq.jpg'
 }
