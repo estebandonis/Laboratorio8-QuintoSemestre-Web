@@ -90,7 +90,9 @@ const Welcome = () => {
         <h1>Bienvenido al Juego de Laberinto</h1>
       </div>
       <div className={form}>
+        <h3>Alto</h3>
         <Inputs type={'number'} value={data.alto} onchange={handleChangeAlto} placeholder={'Ingrese el alto'} />
+        <h3>Ancho</h3>
         <Inputs type={'number'} value={data.ancho} onchange={handleChangeAncho} placeholder={'Ingrese el ancho'} />
         <Inputs type={'checkbox'} value={data.selected} onchange={handleChecked} />
         {

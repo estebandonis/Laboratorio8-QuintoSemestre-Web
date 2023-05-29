@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { styles } from './Inputs.module.css'
 
 const Inputs = ({ type, value, onchange, placeholder }) => {
+  // eslint-disable-next-line no-unused-vars
   let prop
 
   useEffect(() => {
